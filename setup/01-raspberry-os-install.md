@@ -7,48 +7,81 @@
 - **SSD 2242 M.2 NVMe 256GB**
 - **M.2 NVMe SSD USB 3.2 GEN2 10Gbps 외장하드 케이스**
 - **Micro HDMI to HDMI 2.0**
+<br>
 
+---
 
 <br>
 
+
 ## 1️⃣ **라즈베리 파이 OS 설치 (SSD에 직접 설치)**
-1. **SSD를 PC에 연결**  
-   - NVMe SSD를 USB 리더기에 장착하고 PC에 연결
 
-2. **라즈베리 파이 이미저 다운로드 및 실행**  
-   - [공식 사이트](https://www.raspberrypi.com/software/)에서 다운로드  
-   - "라즈베리 파이 5" 선택  
-   - "64비트 OS" 선택 후 설치 진행
+### - **라즈베리 파이 OS 설치 준비**
+-  [라즈베리파이 이미저 다운로드](https://www.raspberrypi.com/software/) 후 실행
+-  NVMe SSD를 USB 리더기에 장착하고 PC에 연결
+<br>
 
-3. **설치 완료 후 PC에서 SSD 분리 및 다시 연결**  
-   - OS 설치가 완료되면 SSD를 분리 후 다시 연결  
+**설치 단계**
+- `Choose Device` → **라즈베리 파이 5**
+- `Choose OS` → **Other general-purpose OS** → **Ubuntu** → **Ubuntu Desktop 24.10 (64-bit)**
+<br>
 
-4. **PCIe 설정 수정 (config.txt 변경)**
-   - SSD에서 `config.txt` 파일을 열고 **하단에 다음을 추가**
-   ```ini
-   # PCIe 설정을 활성화합니다.
-   [all]
-   dtparam=pciex1  # PCIe 장치를 인식할 수 있도록 활성화 (M.2 NVMe SSD 사용 가능)
-   dtparam=pciex1_gen3=3  # PCIe 3.0 모드에서 작동하도록 설정
+**추가 설정 화면**
 
-   # PCIe (Peripheral Component Interconnect Express)
-   # 고속 데이터 전송을 위한 컴퓨터 확장 슬롯 인터페이스
-   ```
+![KakaoTalk_20250313_132545867_resized](https://github.com/user-attachments/assets/9e2c3968-5775-4e2c-995a-f61589882a3b)
+![image_resized](https://github.com/user-attachments/assets/ee1f0ce0-3223-42bd-ae6c-21c7d4fec0fe)
 
-5. **부팅 순서 변경 (MicroSD → SSD)**  
-   - MicroSD가 아닌 SSD에서 부팅을 하므로 내부 EEPROM에서 부팅 순서를 변경해야 함  
-   - 부팅 후 터미널에서 EEPROM 설정 수정  
-   ```bash
-    sudo rpi-eeprom-config --edit
-   ```
-   -  `BOOT_ORDER` 값을 아래와 같이 변경:  
-   ```ini
-    BOOT_ORDER=0xf41  # 기존 값
-    BOOT_ORDER=0xf416  # 변경 후 (SSD 부팅 활성화)
-   ```  
-   - **PCIe 장치 탐색 활성화**
-   ```ini
-    PCIE_PROBE=1
-   ```
-  
-   - 변경 후 저장: `Ctrl + X` → `Y` → `Enter`  
+- **Ctrl + Shift + X** 키를 눌러 커스터마이징 화면을 활성화
+- 다음 설정항목을 채우기
+  - `사용자 이름 및 비밀번호 설정` → 사용자 이름, 비밀번호 설정
+  - `무선 LAN설정` → Wifi 아이디 및 비밀번호 입력
+  - `무선 LAN 국가 설정` → KR
+  - `로캐일 설정` → 시간대: `Asia/Seoul`, 키보드 레이아웃: `us`
+  - `SSH 활성화` → 체크  
+
+
+**설치 진행**
+- 선택 완료 후 설치 진행
+<br>
+
+### - **설치 후 연결 및 부팅 과정**
+
+1. **SSD 카드 연결**
+   - 노트북에 연결된 **USB 리더기 (C to USB 케이블)** 분리
+   - 분리 후 **라즈베리파이 5의 USB 3.0 포트 (파란색)** 에 연결
+
+2. **전원 및 디스플레이 연결**
+   - **라즈베리파이 전용 어댑터**를 전원 포트에 연결
+   - **HDMI to Micro HDMI** 케이블을 사용해 **라즈베리파이 5**와 **노트북**을 연결
+
+3. **부팅 확인**
+   - 전원을 연결하면 라즈베리파이 5의 상태 LED가 점등됨
+
+---
+
+### - **LED 상태 표시 (부팅 상태 확인)**
+
+| **LED 색상** | **LED 상태** | **의미** |
+|:--------------|:--------------|:------------|
+| 🟢 **녹색 LED** | **깜빡임** | 정상적으로 부팅 중 |
+| 🔴 **빨간색 LED** | **상시 점등** | 전원 공급 정상 |
+| 🟢 **녹색 LED** | **꺼짐** | 부팅 실패 (OS 인식 불가) |
+| 🟢 **녹색 LED** | **빠르게 점멸** | SD 카드 또는 SSD 인식 문제 |
+| 🔴 **빨간색 LED** | **깜빡임** | 전원 불안정 (어댑터 문제 가능성) |
+| 🚫 **두 LED 모두 꺼짐** | **꺼짐** | 전원 공급 불량 또는 보드 문제 |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
