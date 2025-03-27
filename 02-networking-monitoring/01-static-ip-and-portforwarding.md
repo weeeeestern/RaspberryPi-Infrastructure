@@ -55,6 +55,10 @@
 - 내부 포트: `5900`
 - 프로토콜: TCP
 
+### 최종
+<img src="https://github.com/user-attachments/assets/e2cd2e63-3931-4517-99fc-89f410fa0b94" width="700"/>
+
+<br>
 <br>
 
 ## 3️⃣ CGNAT 주의사항
