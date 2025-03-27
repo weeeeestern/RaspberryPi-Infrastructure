@@ -11,36 +11,53 @@
 
  **DHCP 수동 설정 (Static DHCP)** 을 통해 **고정 ip를 할당** 해줘야 포트포워딩에 문제가 생기지 않음
 
-<br>
+<img src="https://github.com/user-attachments/assets/311c93b9-963d-4406-a529-0d3401559b85" width="600"/>
 
-## 1. DHCP 고정 할당하는 방법
-
-1. 공유기 관리자 페이지 접속 후 
-
-2. DHCP 할당정보 페이지 찾기
-   - 로그인 후 **DHCP 할당정보 → raspberrypi MAC주소** 찾기(하드웨어 주소랑 같은거임)
-
-3. MAC 주소 기반으로 고정 IP  등록
-   - 예: MAC 주소 `B8:27:EB:XX:XX:XX` → IP: `192.168.219.100`
+이해를 돕기위한 사진
 
 <br>
 
-## 2. 포트포워딩 설정
-### ✅ SSH 접속
+## 1️⃣ DHCP 고정 할당하는 방법
+
+
+<img src="https://github.com/user-attachments/assets/8c66d76f-b3f0-464d-a766-fd8b1c83edb3" width="600"/>
+
+1. 공유기 관리자 페이지 접속 후   
+2. DHCP 할당정보 페이지 찾기  
+   - 로그인 후 **DHCP 할당정보 → raspberrypi MAC주소** 찾기(하드웨어 주소랑 같은거임)  
+  
+<br>
+<br>
+<img src="https://github.com/user-attachments/assets/c43bc8b6-0a22-4c44-8feb-301ece74a95e" width="600"/>
+
+
+3. MAC 주소 기반으로 고정 IP  등록    
+   - 예: MAC 주소 `B8:27:EB:XX:XX:XX` → IP: `192.168.219.100`      
+
+<br>
+
+## 2️⃣ 포트포워딩 설정
+
+<img src="https://github.com/user-attachments/assets/aef3e568-9788-4285-ab63-1201b085ca69" width="400"/>
+
+### SSH 접속 (22번 포트)
 - 외부 포트: `22`
 - 내부 IP: `192.168.219.100`
 - 내부 포트: `22`
 - 프로토콜: TCP
 
+<img src="https://github.com/user-attachments/assets/7430ab73-7267-4cac-bc39-f83588a6175e" width="400"/>
 
-### ✅ VNC 접속
+<br>
+
+### VNC 접속 (5900 포트)
 - 외부 포트: `5900`
 - 내부 포트: `5900`
 - 프로토콜: TCP
 
+<br>
 
-
-## 3. CGNAT 주의사항
+## 3️⃣ CGNAT 주의사항
 
 **CGNAT (Carrier-Grade NAT)** 환경에서는 외부에서 내부 네트워크로 직접 접근이 불가능함.   
 (ISP가 공인 IP를 여러 사용자에게 공유해서 발생하는 구조.)
@@ -55,3 +72,5 @@
 <br>
 
 **2번까지 마무리를 했다면 외부에서 접속 준비 끝!**
+
+
