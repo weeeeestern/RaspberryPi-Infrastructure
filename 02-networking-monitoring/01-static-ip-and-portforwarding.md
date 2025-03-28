@@ -93,7 +93,7 @@
 ## 3️⃣ CGNAT 주의사항
 
 **CGNAT (Carrier-Grade NAT)** 환경에서는 외부에서 내부 네트워크로 직접 접근이 불가능함.   
-(ISP가 공인 IP를 여러 사용자에게 공유해서 발생하는 구조.)
+(ISP가 공인 IP 하나를 여러 사용자에게 공유해서 발생하는 구조.)
 
 ### CGNAT 여부 확인 방법
 - [https://whatismyipaddress.com/](https://whatismyipaddress.com/) 로 확인한 **공인 IP**가 공유기 설정 페이지에 보이는 WAN IP와 다르면 CGNAT일 가능성이 큼.
