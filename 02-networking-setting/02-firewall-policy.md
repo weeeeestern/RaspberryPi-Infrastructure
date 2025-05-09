@@ -43,4 +43,3 @@ sudo ufw status verbose
 
 실행해보면 ipv4와 ipv6 각각 허용되어 있는 것을 볼 수 있다.  
 
-
