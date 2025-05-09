@@ -1,7 +1,7 @@
-# 사용자 계정 보안 및 VNC 사용자 분리 설정
+# 사용자 세션 분리 및 접근 제어
 
 Raspberry Pi에서 여러 사용자 환경을 구성하고,  
-서버 운영 시 필요한 계정 보안 관리와 VNC 사용자 세션 분리를 설정을 정리했다.
+서버 운영 시 필요한 계정 관리 및 보안 설정을 정리했다.
 
 <br>
 
@@ -56,13 +56,12 @@ sudo passwd 사용자이름
 sudo nano /etc/ssh/sshd_config
 ```
 
-파일 하단에 아래와 같이 추가:
+맨 아래에 다음 줄 추가
 ```
-AllowUsers pi 사용자이름
-예시 : AllowUsers pi alex0
+AllowUsers 사용자이름
+예시 : AllowUsers alex0
 ```
-
-변경 적용:
+저장 후 SSH 재시작
 ```bash
 sudo systemctl restart ssh
 ```
@@ -71,7 +70,7 @@ sudo systemctl restart ssh
 
 <br>
 
-## 3. 접속 실패 방지
+## 3. SSH 로그인 실패 감지
 
 SSH 접속 시도 횟수가 많을 경우 자동 차단하도록 `fail2ban`을 설치해준다
 
@@ -79,7 +78,12 @@ SSH 접속 시도 횟수가 많을 경우 자동 차단하도록 `fail2ban`을 �
 sudo apt install fail2ban -y
 ```
 
-설치 후 기본 설정만으로도 충분히 방어 가능하며, `/etc/fail2ban/jail.conf`에서 세부 설정도 가능하다.
+상태를 확인하고 싶다면
+```bash
+sudo fail2ban-client status
+```
+
+세부적인 설정을 하고 싶다면 `/etc/fail2ban/jail.conf`에서 설정이 가능하다.
 
 <br>
 
