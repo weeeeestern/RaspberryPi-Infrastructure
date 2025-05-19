@@ -153,7 +153,14 @@ sudo systemctl status node_exporter
 
 <img src="https://github.com/user-attachments/assets/238d7f88-37a2-40b0-bc08-52e9325e6786" width=600>  
 
-`active (running)` 상태이면 정상적으로 실행된 것이다.
+`active (running)` 상태이면 정상적으로 실행된 것이다.   
 
+```bash
+curl -X GET http://localhost:9100/metrics
+```
+추가로 위 명령어를 통해서 0.0.0.0:9100 이 열려있는지 확인 가능하다.
+만약 열려있다면, 수집한 매트릭이 긴 문자열로 출력된다.  
+
+<br>
 
 이제 Node Exporter 준비도 끝났다. 수동 실행 없이 시스템 메트릭을 제공할 수 있다.
