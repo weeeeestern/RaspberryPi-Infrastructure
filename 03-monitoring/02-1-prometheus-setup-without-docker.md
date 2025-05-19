@@ -136,3 +136,14 @@ sudo systemctl status prometheus
 <img src="https://github.com/user-attachments/assets/4b2d002e-efbd-490c-85e2-06d9db43e8e4" width=550>    
 
 정상적으로 실행되었다면 "active (running)" 상태가 표시된다.
+
+```bash
+curl -X GET http://localhost:9090
+```
+추가로 위 명령어를 통해서 0.0.0.0:9090 이 열려있는지 확인 가능하다.  
+만약 열려있다면,  
+
+```
+<a href="/graph">Found</a>.
+```
+위 문장을 출력한다. 
