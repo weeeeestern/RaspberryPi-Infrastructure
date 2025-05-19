@@ -66,7 +66,7 @@ msg="Start listening for connections" address=0.0.0.0:9090
 
 <img src = "https://github.com/user-attachments/assets/1eae7dc7-d351-4f2b-ae13-7fcfc57294db" width=550>   
 
-> `http://localhost:9090` 또는 `http://127.0.0.1:9090`으로 접속 가능하다.
+> `http://localhost:9090` 또는 `http://0.0.0.0:9090`으로 접속 가능하다.
 
 이렇게 Prometheus 웹에서 현재 수집 중인 메트릭, 타임라인 그래프, 쿼리 등을 실시간으로 확인할 수 있다.  
 
